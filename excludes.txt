@@ -1,0 +1,14 @@
+# this file contains the filenames that should not be compiled.
+
+**/ODEExample.java
+
+**/JLink*.java
+**/SwtExample.java
+**/csound/**
+# this uses CSound:
+**/MinimalExample.java
+**/u3d/TestScene.java
+**/DeviceSpacenav.java
+**/WiiMoteOSC.java
+**/OSCPool.java
+**/blender/test/**

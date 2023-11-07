@@ -1,0 +1,35 @@
+<toolconfig>
+
+ <rawdevices>
+
+  <rawdevice id="GreenAsia Inc.      USB  Joystick  "
+   type="de.jreality.toolsystem.raw.DeviceJinputController">
+   <prop name="id_string">
+    <string>GreenAsia Inc.      USB  Joystick  </string>
+   </prop>
+  </rawdevice>
+
+ </rawdevices>
+
+ <rawslots>
+
+  <mapping device="GreenAsia Inc.      USB  Joystick  " src="Trigger" target="JumpActivation" />
+  <mapping device="GreenAsia Inc.      USB  Joystick  " src="x" target="RawX" />
+
+ </rawslots>
+
+
+ <virtualdevices>
+
+  <virtualdevice
+   type="de.jreality.toolsystem.virtual.VirtualDeadzoneAxis">
+   <inputslot>RawX</inputslot>
+   <outputslot>ForwardBackwardAxis</outputslot>
+   <prop name="threshold">
+    <double>0.25</double>
+   </prop>
+  </virtualdevice>
+
+ </virtualdevices>
+
+</toolconfig>

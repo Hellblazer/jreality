@@ -1,0 +1,134 @@
+<toolconfig>
+
+    <!-- TODO: create a common set of InputSlots for gamepads and
+               move virtual device config to a shared file for all game pads. -->
+
+	<rawdevices>
+		<rawdevice id="Gamepad"
+			type="de.jreality.toolsystem.raw.DeviceJinputController">
+			<prop name="id_string">
+				<string>Microsoft X-Box 360 pad</string>
+			</prop>
+		</rawdevice>
+	</rawdevices>
+
+	<rawslots>
+		<!--DragActivation == 'Shoot-Imputslot' -->
+
+		<mapping device="Gamepad" src="X" target="DragActivation" />
+		<mapping device="Gamepad" src="A" target="JumpActivation" />
+		<mapping device="Gamepad" src="B" target="GravityToggle" />
+		<mapping device="Gamepad" src="Y" target="ShipRotateActivation" />
+		<mapping device="Gamepad" src="Y" target="RawRX" />
+		<mapping device="Gamepad" src="x" target="RawX" />
+		<mapping device="Gamepad" src="y" target="RawY" />
+		<mapping device="Gamepad" src="rx" target="RawRX" />
+		<mapping device="Gamepad" src="ry" target="RawRY" />
+		
+		<mapping device="Gamepad" src="Left Thumb" target="GroundToggle" />
+		<mapping device="Gamepad" src="Right Thumb" target="PrimarySelection" />
+		<mapping device="Gamepad" src="Start" target="PrimaryMenu" />
+		<mapping device="Gamepad" src="z" target="PrimaryUp" />
+		<mapping device="Gamepad" src="rz" target="PrimaryDown" />
+		
+		
+		
+	</rawslots>
+
+	<virtualdevices>
+
+
+		<mapping src="PrimaryAction" target="PanelAction" />
+		<mapping src="PrimaryMenu" target="PanelMenu" />
+		<mapping src="PrimarySelection" target="PanelSelection" />
+		<mapping src="PrimarySelection" target="ShowPanel" />
+		<mapping src="PrimaryAction" target="RotateActivation" />
+		<mapping src="PrimaryAction" target="AllDragActivation" />
+		<mapping src="PrimaryAction" target="PointDragActivation" />
+		<mapping src="PrimaryAction" target="EdgeDragActivation" />
+		<mapping src="PrimaryAction" target="FaceDragActivation" />
+		<mapping src="PrimaryMenu" target="DragActivation" />
+		<mapping src="PrimarySelection" target="ScaleActivation" />
+		<mapping src="PrimaryAction" target="DeformActivation" />
+		
+		<mapping device="Gamepad" src="axes" target="PointerNDC" />
+		<mapping device="Gamepad" src="axesEvolution" target="PointerNDCevolution" />
+
+
+
+		<virtualdevice type="de.jreality.toolsystem.virtual.VirtualReverseAxis">
+			<inputslot>RawX</inputslot>
+			<outputslot>LeftRightAxisRaw1</outputslot>
+		</virtualdevice>
+	
+		<virtualdevice
+			type="de.jreality.toolsystem.virtual.VirtualDeadzoneAxis">
+			<inputslot>LeftRightAxisRaw1</inputslot>
+			<outputslot>LeftRightAxisRaw2</outputslot>
+			<prop name="threshold">
+				<double>0.25</double>
+			</prop>
+		</virtualdevice>
+	
+	<virtualdevice
+			type="de.jreality.toolsystem.virtual.VirtualScaleAxis">
+			<inputslot>LeftRightAxisRaw2</inputslot>
+			<outputslot>LeftRightAxis</outputslot>
+			<prop name="scale">
+				<double>0.50</double>
+			</prop>
+		</virtualdevice>
+	
+		<virtualdevice
+			type="de.jreality.toolsystem.virtual.VirtualScaleAxis">
+			<inputslot>RawY</inputslot>
+			<outputslot>ForwardBackwardAxisRaw1</outputslot>
+			<prop name="scale">
+				<double>1.75</double>
+			</prop>
+		</virtualdevice>
+	
+	<virtualdevice
+			type="de.jreality.toolsystem.virtual.VirtualDeadzoneAxis">
+			<inputslot>ForwardBackwardAxisRaw1</inputslot>
+			<outputslot>ForwardBackwardAxis</outputslot>
+			<prop name="threshold">
+				<double>0.25</double>
+			</prop>
+		</virtualdevice>
+	
+	
+	<virtualdevice type="de.jreality.toolsystem.virtual.VirtualReverseAxis">
+			<inputslot>RawRY</inputslot>
+			<outputslot>RawRYReverse</outputslot>
+		</virtualdevice>
+	
+		<virtualdevice
+					type="de.jreality.toolsystem.virtual.VirtualTimestepEvolution">
+			<inputslot>RawRYReverse</inputslot>
+			<inputslot>SystemTime</inputslot>
+			<outputslot>VerticalHeadRotationAngleEvolution</outputslot>
+			<prop name="gain">
+				<double>10.0</double>
+			</prop>
+		</virtualdevice>
+
+
+<virtualdevice type="de.jreality.toolsystem.virtual.VirtualReverseAxis">
+			<inputslot>RawRX</inputslot>
+			<outputslot>RawRXReverse</outputslot>
+		</virtualdevice>
+
+		<virtualdevice
+					type="de.jreality.toolsystem.virtual.VirtualTimestepEvolution">
+			<inputslot>RawRXReverse</inputslot>
+			<inputslot>SystemTime</inputslot>
+			<outputslot>HorizontalShipRotationAngleEvolution</outputslot>
+			<prop name="gain">
+				<double>10.0</double>
+			</prop>
+		</virtualdevice>
+		
+		
+	</virtualdevices>
+</toolconfig>
